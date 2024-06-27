@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\{AuthController,subscriptionController};
 
 Route::group(['middleware' => ['guest']],function(){
 
@@ -13,6 +13,10 @@ Route::group(['middleware' => ['guest']],function(){
 
 Route::group(['middleware' => ['isAuth']],function(){
     Route::get('/dashboard',[AuthController::class,'dashboard']);
+});
+
+Route::group(['middleware' => ['isAuthnticate']],function(){
+    Route::get('subscription',[subscriptionController::class,'index']);
 });
 
 

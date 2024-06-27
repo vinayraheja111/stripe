@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class userAuthenticate
+class isAuthenticate
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,9 @@ class userAuthenticate
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->check()) {
-            if (auth()->user()->is_subscription == 0) {
-                return redirect('/subscription');
-            }
-            return $next($request);
+             return $next($request);
         }
 
-        return redirect('/user-login');
-       
+        return redirect('user-login');
     }
 }
